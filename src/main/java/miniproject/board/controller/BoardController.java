@@ -28,8 +28,10 @@ public class BoardController {
         return "boardlist.html";
     }
 
-    @GetMapping("/board")
-    public String board(){
+    @GetMapping("/board/{id}")
+    public String board(Model model, @PathVariable("id") Integer id){
+        Boards board = service.board(id);
+        model.addAttribute("board", board);
         return "board";
     }
 
