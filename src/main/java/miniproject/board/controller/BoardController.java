@@ -30,6 +30,7 @@ public class BoardController {
 
     @GetMapping("/board/{id}")
     public String board(Model model, @PathVariable("id") Integer id){
+        System.out.println("게시판 화면입니다.");
         Boards board = service.board(id);
         model.addAttribute("board", board);
         return "board";
