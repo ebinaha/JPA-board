@@ -7,11 +7,11 @@
 <body>
     <form method="post">
         <!--id는 생략가능-->
-        <p><input type="text" name="id" hidden th:value="${board.id}" ></p>
+        <p><input type="hidden" name="id" th:value="${board.id}"></p>
         <p><input type="text" name="title" th:value="${board.title}"></p>
         <p><textarea name="content" id="" cols="30" rows="10" th:text="${board.content}">내용</textarea></p>
-        <p><input type="submit" value="수정" th:formaction="@{/boardUpdate/{id}(id=${board.id})}"></p>
-        <p><input type="submit" value="삭제" th:formaction="@{/boardDelete/{id}(id=${board.id})}"></p>
+        <p><input type="submit" value="수정" th:formaction="@{/boardUpdate}"></p>
+        <p><input type="submit" value="삭제" th:formaction="@{/boardDelete}"></p>
     </form>
 </body>
 </html>

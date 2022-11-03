@@ -59,21 +59,24 @@ public class BoardController {
         return "redirect:/boardlist";
     }
 
-    @PostMapping("/boardUpdate/{id}")
-    public String boardUpdate(BoardForm form, @PathVariable("id") Integer id){
-        System.out.println(form);
-
-        Boards board = new Boards();
-        board.setId(id);
-        board.setTitle(form.getTitle());
-        board.setContent(form.getContent());
+    @PostMapping("/boardUpdate")
+    public String boardUpdate(BoardForm form){
+        Boards board = service.board(form.getId());
+        // 변경이 있을 때만 업데이트
+        if(form.getTitle() != board.getTitle()) {   
+            board.setTitle(form.getTitle());
+        }
+        if(form.getContent() != board.getContent()) {
+            board.setContent(form.getContent());
+        }
         service.boardSave(board); //신규등록(id 없는 상태), 업데이트(id 있는 상태)
 
         return "redirect:/boardlist";
-
     }
-    @PostMapping("/boardDelete/{id}")
-    public String boardDelete(@PathVariable("id") Integer id){
+    
+    @PostMapping("/boardDelete")
+    //boardform의 id값만 들고오는 것
+    public String boardDelete(Integer id){
         service.boardDelete(id);
         return "redirect:/boardlist";
     }
