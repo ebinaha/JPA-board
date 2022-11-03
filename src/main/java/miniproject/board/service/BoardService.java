@@ -26,9 +26,12 @@ public class BoardService {
      * @param boards
      * @return
      */
-    public Integer boardSave(Boards boards){
+    /* public Integer boardSave(Boards boards){
         Boards board = repository.save(boards);
         return board.getId();
+    }*/
+    public void boardSave(Boards boards){
+        repository.save(boards);
     }
 
     /**
