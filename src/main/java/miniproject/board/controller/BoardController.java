@@ -21,6 +21,11 @@ public class BoardController {
         this.service = service;
     }
 
+    @GetMapping("/")
+    public String home(){
+        return "home";
+    }
+
     @GetMapping("/boardlist")
     public String boardlist(Model model){
         List<Boards> boards = service.boardsList();
