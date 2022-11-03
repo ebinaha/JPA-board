@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>게시판</title>
 </head>
 <body>
-
+    <form method="post">
+        <p><input type="text" name="id" th:value="${board.id}"></p>
+        <p><input type="text" name="title" th:value="${board.title}"></p>
+        <p><textarea name="content" id="" cols="30" rows="10">내용</textarea></p>
+        <p><input type="submit" value="수정" th:formaction="@{/boardUpdate/{id}(id=${board.id})}"></p>
+        <p><input type="submit" value="삭제" th:formaction="@{/boardDelete/{id}(id=${board.id})}"></p>
+    </form>
 </body>
 </html>
