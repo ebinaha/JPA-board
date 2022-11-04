@@ -95,7 +95,7 @@ public class BoardController {
     public String boardUpdate(BoardForm form, Model model){
         Boards board = service.board(form.getId());
         // 변경이 있을 때만 업데이트
-        if(form.getTitle() != board.getTitle()) {   
+        if(form.getTitle() != board.getTitle()) {
             board.setTitle(form.getTitle());
         }
         if(form.getContent() != board.getContent()) {
