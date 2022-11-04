@@ -26,6 +26,13 @@
       </tbody>
     </table>
   </div>
+  <hr>
+  <!--페이징처리 부분-->
+  <!-- 태그로 감쌀 필요가 없는 부분을 별도로 감싸서 처리할 때 th:block을 사용함-->
+  <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+    <a th:if="${page != nowPage}" th:href="@{/memberlist/(page=${page-1})}" th:text="${page}"></a>
+    <strong th:if="${page == nowPage}" th:text="${page}"></strong>  <!-- 눌렀을 때 이동하지 않게 -->
+  </th:block>
 </div> <!-- /container -->
 </body>
 </html>

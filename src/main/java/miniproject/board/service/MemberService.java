@@ -3,6 +3,8 @@ package miniproject.board.service;
 import miniproject.board.domain.Member;
 import miniproject.board.repository.JpaMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -32,8 +34,9 @@ public class MemberService {
     /**
      * 전체 회원 조회
      */
-    public List<Member> findAllMembers(){
-        return repository.findAll();
+    public Page<Member> findAllMembers(Pageable pageable){
+        Page<Member> members = repository.findAll(pageable);
+        return members;
     }
 
     /**
