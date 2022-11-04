@@ -3,6 +3,8 @@ package miniproject.board.controller;
 import miniproject.board.domain.Boards;
 import miniproject.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +29,8 @@ public class BoardController {
     }
 
     @GetMapping("/boardlist")
-    public String boardlist(Model model){
-        List<Boards> boards = service.boardsList();
+    public String boardlist(Model model, Pageable pageable){
+        Page<Boards> boards = service.boardsList(pageable);
         model.addAttribute("boards", boards);
         return "boardlist.html";
     }
