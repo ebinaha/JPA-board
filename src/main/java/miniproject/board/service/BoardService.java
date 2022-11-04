@@ -32,8 +32,9 @@ public class BoardService {
         Boards board = repository.save(boards);
         return board.getId();
     }*/
-    public void boardSave(Boards boards){
-        repository.save(boards);
+    public Integer boardSave(Boards boards){
+        Boards save = repository.save(boards);
+        return save.getId();
     }
 
     /**
