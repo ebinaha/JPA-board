@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>이름</th>
+        <th>전화번호</th>
+        <th>이메일</th>
+        <th>주소</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!-- members 라는 모델(값이 리스트로 저장되어 있음)안에서 꺼낸 뒤 각각의 값을 출력한다. -->
+      <tr th:each="member : ${members}">
+        <!-- member 의 id, name을 직접 접근하여 가져온다. -->
+        <td><a th:href="@{member/{id}(id=${member.id})}" th:text="${member.id}"></a></td>
+        <td th:text="${member.name}"></td>
+        <td th:text="${member.phone}"></td>
+        <td th:text="${member.email}"></td>
+        <td th:text="${member.address}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div> <!-- /container -->
+</body>
+</html>

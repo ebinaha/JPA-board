@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form th:action="@{/member/{id}(id=${member.id})}" method="post">
+  <!--td th:text="${member.id}"></td-->
+  <p><label>아이디
+    <input type="text" name="id" readonly th:value="${member.id}"></label>
+  </p>
+  <p><label>이름
+    <input type="text" name="name" readonly th:value="${member.name}"></label></p>
+  <p><label>전화번호
+    <input type="text" name="phone" th:value="${member.phone}"></label></p>
+  <P><label>email
+    <input type="email" name="email" th:value="${member.email}"></label></P>
+  <P><label>주소
+    <input type="text" name="address" th:value="${member.address}"></label></P>
+  <P><input type="submit"></P>
+</form>
+</body>
+</html>
