@@ -1,6 +1,8 @@
 package miniproject.board.domain;
 
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,9 +11,14 @@ public class Boards {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column
+    @Column(nullable = false)
+    @NotNull
     private String title;
+
     private String content;
+/*    @ManyToOne
+    @JoinColumn(name = "userid")
+    private Member member;*/
 
     public Integer getId() {
         return id;

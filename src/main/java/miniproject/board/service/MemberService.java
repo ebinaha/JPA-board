@@ -1,5 +1,6 @@
 package miniproject.board.service;
 
+import miniproject.board.domain.Boards;
 import miniproject.board.domain.Member;
 import miniproject.board.repository.JpaMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class MemberService {
         this.repository = repository;
     }
     /**
-     * 회원 가입
+     * 회원 가입 / 저장
      */
     public Long memberJoin(Member member){
         return repository.save(member).getId();
@@ -44,9 +45,15 @@ public class MemberService {
      * @param id
      * @return
      */
-    public Optional<Member> findMember(Long id){
+/*    public Optional<Member> findMember(Long id){
         return repository.findById(id);
+    }*/
+    public Member member(Long id){
+        //optional ==> 리스트 형태
+        Optional<Member> memberlist = repository.findById(id);
+        return memberlist.get();
     }
+
     /**
      * 한건의 회원정보를 삭제한다.
      * @param id

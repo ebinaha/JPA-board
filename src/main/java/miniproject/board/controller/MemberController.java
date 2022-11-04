@@ -72,14 +72,21 @@ public class MemberController {
      * @param id
      * @return
      */
-    @GetMapping("/member/{id}")
+/*    @GetMapping("/member/{id}")
     public String member(Model model, @PathVariable("id") Long id){
         Member member = service.findMember(id).get();
         model.addAttribute("member", member);
         return "member";
+    }*/
+    @GetMapping("/member/{id}")
+    public String member(Model model, @PathVariable("id") Long id){
+        System.out.println("회원 화면입니다.");
+        Member member = service.member(id);
+        model.addAttribute("member", member);
+        return "member";
     }
 
-    @PostMapping("/member/{id}")
+/*    @PostMapping("/member/{id}")
     public String memberUpdate(MemberForm form, @PathVariable("id") Long id){
         Member member = service.findMember(id).get();
         member.setPhone(form.getPhone());
@@ -87,6 +94,25 @@ public class MemberController {
         member.setAddress(form.getAddress());
         System.out.println(member);
         Long aLong = service.memberJoin(member);
+        return "redirect:/";
+    }*/
+    @PostMapping("/member")
+    public String memberUpdate(MemberForm form){
+        Member member = service.member(form.getId());
+        if(form.getName() != member.getName()){
+            member.setName(form.getName());
+        }
+        if(form.getAddress() != member.getAddress()){
+            member.setAddress(form.getAddress());
+        }
+        if(form.getEmail() != member.getEmail()){
+            member.setEmail(form.getEmail());
+        }
+        if(form.getPhone() != member.getPhone()){
+            member.setPhone(form.getPhone());
+        }
+        System.out.println(member);
+        service.memberJoin(member);
         return "redirect:/";
     }
 }

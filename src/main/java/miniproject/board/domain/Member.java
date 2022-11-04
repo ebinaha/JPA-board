@@ -1,9 +1,6 @@
 package miniproject.board.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * 회원 정보를 저장하기 위한 객체
@@ -15,6 +12,7 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 아이디를 디비에서 자동으로 만들어주는 전략을 설정한다.
+    @Column(nullable = false)
     private String name;
     private String phone;
     private String email;
