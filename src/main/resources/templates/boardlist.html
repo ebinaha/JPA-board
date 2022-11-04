@@ -18,7 +18,7 @@
          <!--thymeleaf 문법 : 컨트롤러에서 ${boards}를 List 형태로 받아옴 => model 사용 -->
          <tr th:each="board : ${boards}">
              <td><a th:href="@{/board/{id}(id=${board.id})}" th:text="${board.id}"></a></td>
-             <td th:text="${board.title}"></td>
+             <td><a th:href="@{/board/{id}(id=${board.id})}" th:text="${board.title}"></a></td>
              <td th:text="${board.content}"></td>
          </tr>
      </tbody>

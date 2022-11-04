@@ -3,6 +3,8 @@ package miniproject.board.service;
 import miniproject.board.domain.Boards;
 import miniproject.board.repository.JpaBoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -35,11 +37,11 @@ public class BoardService {
     }
 
     /**
-     * 게시판리스트
+     * 게시판리스트, domain.pageable : 추상인터페이스
      * @return
      */
-    public List<Boards> boardsList(){
-        List<Boards> boards = repository.findAll();
+    public Page<Boards> boardsList(Pageable pageable){
+        Page<Boards> boards = repository.findAll(pageable);
         return boards;
     }
 

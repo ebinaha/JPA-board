@@ -33,6 +33,7 @@ public class BoardController {
         return "boardlist.html";
     }
 
+
     @GetMapping("/board/{id}")
     public String board(Model model, @PathVariable("id") Integer id){
         System.out.println("게시판 화면입니다.");
